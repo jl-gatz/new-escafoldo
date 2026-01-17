@@ -1,0 +1,10 @@
+{% extends "base.html" %} {% block title %} {{ equipamento.marca }}
+{{equipamento.modelo }} {% endblock %} {% block content %}
+<div class="container">
+  <h1>{{ equipamento.marca }} {{ equipamento.modelo }}</h1>
+
+  <div class="detail-info">
+    <!-- Add your equipamento details here -->
+  </div>
+</div>
+{% endblock %}
