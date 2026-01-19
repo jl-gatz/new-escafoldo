@@ -26,4 +26,5 @@ urlpatterns = [
     path(
         'equipamentos/', include('equipamentos.urls')
     ),  # Include URLs from equipamentos app
+    path('visitas/', include('visitas.urls')),  # Include URLs from visitas app
 ]
