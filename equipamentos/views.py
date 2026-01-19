@@ -1,11 +1,14 @@
 from django.views.generic import DetailView, ListView
 
+from equipamentos import serializers
+
 from .models import Equipamento
 
 
 class EquipamentoListView(ListView):
     queryset = Equipamento.objects.all()
     model = Equipamento
+    serializer_class = serializers.EquipamentoSerializer
     template_name = 'equipamentos/equipamento_list.html'
     context_object_name = 'equipamentos'
     paginate_by = 10  # Número de equipamentos por página
@@ -18,6 +21,7 @@ class EquipamentoListView(ListView):
 
 class EquipamentoDetailView(DetailView):
     model = Equipamento
+    serializer_class = serializers.EquipamentoSerializer
     template_name = 'equipamentos/equipamento_detail.html'
     context_object_name = 'equipamento'
     pk_url_kwarg = 'equipamento_id'  # 'equipamento_id' eh PK
