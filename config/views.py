@@ -1,5 +1,9 @@
-from django.shortcuts import render
+from django.http import JsonResponse
 
 
 def home(request):
-    return render(request, 'index.html')
+    data = {
+        'message': 'API is running!',
+        'title': 'checked',
+    }
+    return JsonResponse(data)

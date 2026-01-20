@@ -27,3 +27,24 @@ class Visita(models.Model):
         verbose_name_plural = 'Visitas'
         ordering = ['-data_visita']
         db_table = 'visitas'
+
+
+class VisitaImagem(models.Model):
+    visita = models.ForeignKey(
+        Visita,
+        on_delete=models.CASCADE,
+        related_name='imagens',
+        verbose_name='Visita relacionada',
+    )
+    imagem = models.ImageField(
+        upload_to='static/media/visitas/', verbose_name='Imagem da visita'
+    )
+
+    class Meta:
+        verbose_name = 'Imagem da Visita'
+        verbose_name_plural = 'Imagens das Visitas'
+        ordering = ['visita']
+        db_table = 'visita_imagens'
+
+    def __str__(self):
+        return f'Imagem da visita {self.imagem.url}'

@@ -20,16 +20,17 @@ from django.urls import include, path
 from rest_framework.routers import DefaultRouter
 
 from equipamentos.api.v1.views import EquipamentosViewSet
+from visitas.api.v1.views import VisitasViewSet
 
 from . import views
 
 router = DefaultRouter()
 router.register(r'equipamentos', EquipamentosViewSet, basename='equipamento')
+router.register(r'visitas', VisitasViewSet, basename='visita')
 
 
 urlpatterns = [
     path('', views.home, name='home'),  # Home page view
     path('admin/', admin.site.urls),
     path('api/v1/', include(router.urls)),  # DRF API routes
-    path('visitas/', include('visitas.urls')),  # Include URLs from visitas app
 ]

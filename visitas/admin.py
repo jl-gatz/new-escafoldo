@@ -1,6 +1,11 @@
 from django.contrib import admin
 
-from .models import Visita
+from .models import Visita, VisitaImagem
+
+
+class VisitaImagemInline(admin.StackedInline):
+    model = VisitaImagem
+    extra = 1
 
 
 @admin.register(Visita)
@@ -16,3 +21,4 @@ class VisitaAdmin(admin.ModelAdmin):
     )
     ordering = ('-data_visita',)
     prepopulated_fields = {'slug': ('visitante_nome', 'data_visita')}
+    inlines = [VisitaImagemInline]

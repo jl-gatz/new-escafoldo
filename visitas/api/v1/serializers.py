@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Visita
+from visitas.models import Visita
 
 
 class VisitaSerializer(serializers.ModelSerializer):
