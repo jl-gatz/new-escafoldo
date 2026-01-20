@@ -17,14 +17,19 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import include, path
+from rest_framework.routers import DefaultRouter
+
+from equipamentos.api.v1.views import EquipamentosViewSet
 
 from . import views
+
+router = DefaultRouter()
+router.register(r'equipamentos', EquipamentosViewSet, basename='equipamento')
+
 
 urlpatterns = [
     path('', views.home, name='home'),  # Home page view
     path('admin/', admin.site.urls),
-    path(
-        'equipamentos/', include('equipamentos.urls')
-    ),  # Include URLs from equipamentos app
+    path('api/v1/', include(router.urls)),  # DRF API routes
     path('visitas/', include('visitas.urls')),  # Include URLs from visitas app
 ]
