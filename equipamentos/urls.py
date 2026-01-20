@@ -10,7 +10,7 @@ urlpatterns = [
         name='equipamento_detail',
     ),
     path(
-        '<int:equipamento_id>/',
+        '<int:pk>/',
         EquipamentoDetailView.as_view(),
         name='equipamento_detail_by_id',
     ),
