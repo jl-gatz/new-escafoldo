@@ -15,3 +15,4 @@ class VisitaAdmin(admin.ModelAdmin):
         'visitante_email',
     )
     ordering = ('-data_visita',)
+    prepopulated_fields = {'slug': ('visitante_nome', 'data_visita')}

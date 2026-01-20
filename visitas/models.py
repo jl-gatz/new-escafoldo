@@ -1,3 +1,5 @@
+import uuid
+
 from django.db import models
 
 
@@ -5,7 +7,7 @@ from django.db import models
 class Visita(models.Model):
     codigo = models.UUIDField(
         primary_key=True,
-        default=models.UUIDField,
+        default=uuid.uuid4,
         editable=False,
         verbose_name='id_visita',
     )
@@ -18,6 +20,7 @@ class Visita(models.Model):
     data_visita = models.DateTimeField(
         verbose_name='Data da visita', auto_now_add=False, null=False
     )
+    slug = models.SlugField(null=False, unique=True, max_length=100)
 
     class Meta:
         verbose_name = 'Visita'

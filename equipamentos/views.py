@@ -14,7 +14,18 @@ class EquipamentoListView(ListAPIView):
     ordering = ['marca', 'modelo']  # Ordenar por marca e modelo
 
 
-class EquipamentoDetailView(RetrieveUpdateDestroyAPIView):
+class EquipamentoSlugView(RetrieveUpdateDestroyAPIView):
+    queryset = Equipamento.objects.all()
+    model = Equipamento
+    serializer_class = serializers.EquipamentoSerializer
+    slug_url_kwarg = 'slug'
+
+    def get_object(self):
+        slug = self.kwargs.get(self.slug_url_kwarg)
+        return Equipamento.objects.get(slug=slug)
+
+
+class EquipamentoDetailViewById(RetrieveUpdateDestroyAPIView):
     queryset = Equipamento.objects.all()
     model = Equipamento
     serializer_class = serializers.EquipamentoSerializer

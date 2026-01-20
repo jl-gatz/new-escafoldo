@@ -1,3 +1,5 @@
+import uuid
+
 from django.db import models
 
 
@@ -5,7 +7,7 @@ from django.db import models
 class Equipamento(models.Model):
     codigo = models.UUIDField(
         primary_key=True,
-        default=models.UUIDField,
+        default=uuid.uuid4,
         editable=False,
         verbose_name='id_equipamentos',
     )
@@ -17,7 +19,7 @@ class Equipamento(models.Model):
     )
     marca = models.CharField(verbose_name='Marca', max_length=40, null=True)
     modelo = models.CharField(verbose_name='Modelo', max_length=40, null=True)
-    slug = models.SlugField(null=True)
+    slug = models.SlugField(null=False, unique=True, max_length=100)
     url = models.URLField(
         verbose_name='Link para o equipamento',
         max_length=200,

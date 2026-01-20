@@ -1,17 +1,21 @@
 from django.urls import path
 
-from .views import EquipamentoDetailView, EquipamentoListView
+from .views import (
+    EquipamentoDetailViewById,
+    EquipamentoListView,
+    EquipamentoSlugView,
+)
 
 urlpatterns = [
     path('', EquipamentoListView.as_view(), name='equipamento_list'),
     path(
-        '<slug:slug>/',
-        EquipamentoDetailView.as_view(),
-        name='equipamento_detail',
+        '<uuid:pk>/',
+        EquipamentoDetailViewById.as_view(),
+        name='equipamento_detail_by_id',
     ),
     path(
-        '<int:pk>/',
-        EquipamentoDetailView.as_view(),
-        name='equipamento_detail_by_id',
+        '<slug:slug>/',
+        EquipamentoSlugView.as_view(),
+        name='equipamento_slug',
     ),
 ]
