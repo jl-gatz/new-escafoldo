@@ -3,7 +3,12 @@ from django.db import models
 
 # Modelos do app equipamentos
 class Equipamento(models.Model):
-    codigo = models.CharField(verbose_name='id', max_length=12, null=True)
+    codigo = models.UUIDField(
+        primary_key=True,
+        default=models.UUIDField,
+        editable=False,
+        verbose_name='id_equipamentos',
+    )
     descricao = models.CharField(
         verbose_name='Descrição do equipamento', max_length=144, null=True
     )
@@ -24,3 +29,4 @@ class Equipamento(models.Model):
         verbose_name = 'Equipamento'
         verbose_name_plural = 'Equipamentos'
         ordering = ['codigo']
+        db_table = 'equipamentos'

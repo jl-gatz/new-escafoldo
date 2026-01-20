@@ -3,6 +3,12 @@ from django.db import models
 
 # Modelos do app visitas
 class Visita(models.Model):
+    codigo = models.UUIDField(
+        primary_key=True,
+        default=models.UUIDField,
+        editable=False,
+        verbose_name='id_visita',
+    )
     visitante_nome = models.CharField(
         verbose_name='Nome do visitante', max_length=100, null=False
     )
