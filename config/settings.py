@@ -44,8 +44,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'drf_spectacular',
+    'drf_spectacular_sidecar',
     'equipamentos',
     'visitas',
+    'schemas_docs',
 ]
 
 MIDDLEWARE = [
@@ -106,6 +109,18 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Museu API',
+    'DESCRIPTION': 'API para gerenciamento de equipamentos e visitas do museu.',
+    'VERSION': '1.0.0',
+    'SERVE_REDOC': True,
+    'SERVE_SWAGGER': True,
+}   
 
 
 # Internationalization

@@ -33,4 +33,9 @@ urlpatterns = [
     path('', views.home, name='home'),  # Home page view
     path('admin/', admin.site.urls),
     path('api/v1/', include(router.urls)),  # DRF API routes
+    path(
+        'api/v1/docs/',
+        include('schemas_docs.urls'),
+        name='api-schema',
+    ),
 ]
