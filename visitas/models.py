@@ -1,6 +1,7 @@
 import uuid
 
 from django.db import models
+from django.utils.text import slugify
 
 
 # Modelos do app visitas
@@ -27,6 +28,11 @@ class Visita(models.Model):
         verbose_name_plural = 'Visitas'
         ordering = ['-data_visita']
         db_table = 'visitas'
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(f'{self.visitante_nome} {self.data_visita}')
+        super().save(*args, **kwargs)
 
 
 class VisitaImagem(models.Model):
