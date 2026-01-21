@@ -1,6 +1,7 @@
 import uuid
 
 from django.db import models
+from django.utils.text import slugify
 
 
 # Modelos do app equipamentos
@@ -32,3 +33,8 @@ class Equipamento(models.Model):
         verbose_name_plural = 'Equipamentos'
         ordering = ['codigo']
         db_table = 'equipamentos'
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(f'{self.marca} {self.modelo}')
+        super().save(*args, **kwargs)
