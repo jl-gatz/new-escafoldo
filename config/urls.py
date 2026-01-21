@@ -35,7 +35,7 @@ urlpatterns = [
     path('api/v1/', include(router.urls)),  # DRF API routes
     path(
         'api/v1/docs/',
-        include('schemas_docs.urls'),
+        include('schemas_docs.v1.urls'),
         name='api-schema',
     ),
 ]
